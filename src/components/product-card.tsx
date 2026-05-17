@@ -6,7 +6,7 @@ function ProductCard({ item }: { item: number }) {
   return (
     <Link
       to={"/detail"}
-      className="border border-gray-300 rounded-md h-60 grow sm:max-w-[50%] flex flex-col relative"
+      className="border border-gray-300 rounded-md h-72 grow min-w-45 max-w-[320px] flex flex-col relative"
     >
       <div className="p-4">ProductCard {item}</div>
 
