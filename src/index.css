@@ -1,7 +1,24 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+/* Map Tailwind's dark: variant to the data-theme attribute */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 @theme {
   /* Restrict allowed daisyUI themes to light and dark only */
-  --daisyui-themes: light, dark;
+  --daisyui-themes: light, dark;/* 1. Declare the active themes */
+
+  /* 2. CUSTOMIZE THE LIGHT THEME */
+  --daisyui-light-primary: #0284c7;       /* Custom light primary color */
+  --daisyui-light-neutral: #1f2937;       /* Custom light layout text/elements */
+  --daisyui-light-base-100: #ffffff;      /* Main application background */
+  --daisyui-light-base-200: #f3f4f6;      /* Secondary light background */
+  --daisyui-light-tab-radius: 0.5rem;     /* Custom border-radius for light mode components */
+
+  /* 3. CUSTOMIZE THE DARK THEME */
+  --daisyui-dark-primary: #38bdf8;        /* Lighter primary color for visibility on dark backgrounds */
+  --daisyui-dark-neutral: #d1d5db;        /* Lighter text for dark backgrounds */
+  --daisyui-dark-base-100: #0f172a;       /* Deep slate/midnight dark background */
+  --daisyui-dark-base-200: #1e293b;       /* Card/section dark background */
+  --daisyui-dark-tab-radius: 0.25rem;     /* Completely different border-radius for dark mode */
 }

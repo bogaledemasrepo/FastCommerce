@@ -6,7 +6,7 @@ function ProductCard({ item }: { item: number }) {
   return (
     <Link
       to={"/detail"}
-      className="border card border-gray-300/50 hover:border-blue-500 duration-200 rounded-md h-78 grow min-w-45 max-w-[320px] flex flex-col relative"
+      className="border card border-gray-300  dark:border-gray-300/50 hover:border-blue-500 duration-200 rounded-md h-78 grow min-w-45 max-w-[320px] flex flex-col relative"
     >
       <div className="p-2 w-40 h-40">
         {item.toString()}

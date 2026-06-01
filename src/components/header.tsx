@@ -13,7 +13,7 @@ function Header() {
     //     <Link to={"/"}>Login</Link>
     //   </nav>
     // </div>
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-base-100 shadow-sm mb-4">
       <div className="flex-1">
         <Link className="btn btn-ghost text-xl" to={"/"}>
           <h1 className="font-bold">FC</h1>
