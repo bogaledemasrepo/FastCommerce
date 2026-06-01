@@ -1,2 +1,7 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+@theme {
+  /* Restrict allowed daisyUI themes to light and dark only */
+  --daisyui-themes: light, dark;
+}

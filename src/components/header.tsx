@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { useCart } from "../context/cart-context";
+import ThemeController from "./theme-controller";
 
 function Header() {
   const { items } = useCart();
@@ -18,7 +19,7 @@ function Header() {
           <h1 className="font-bold">FC</h1>
         </Link>
       </div>
-      <div className="flex-none">
+      <div className="flex-none gap-4">
         <div className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
             <div className="indicator">
@@ -30,7 +31,7 @@ function Header() {
             tabIndex={0}
             className="card card-compact dropdown-content bg-base-100 z-1 mt-3 w-52 shadow">
             <div className="card-body">
-              <span className="text-lg font-bold">8 Items</span>
+              <span className="text-lg font-bold">{items.length}Items</span>
               <span className="text-info">Subtotal: $999</span>
               <div className="card-actions">
                 <button className="btn btn-primary btn-block">View cart</button>
@@ -38,6 +39,7 @@ function Header() {
             </div>
           </div>
         </div>
+        <ThemeController />
         <div className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
