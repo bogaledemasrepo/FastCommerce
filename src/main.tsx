@@ -12,7 +12,7 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <CartProvider>
-        <div className="p-4 max-w-240 mx-auto">
+        <div className="p-4 max-w-280 mx-auto">
           <Header />
           <Routes>
             <Route path="/" element={<HomePage />} />
