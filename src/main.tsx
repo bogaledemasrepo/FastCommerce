@@ -7,6 +7,7 @@ import Header from "./components/header";
 import DetailPage from "./pages/detail";
 import CheckoutPage from "./pages/checkout";
 import { CartProvider } from "./context/cart-context";
+import Footer from "./components/footer";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -19,6 +20,7 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/detail" element={<DetailPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
           </Routes>
+          <Footer />
         </div>
       </CartProvider>
     </BrowserRouter>
