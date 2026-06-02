@@ -5,14 +5,6 @@ import ThemeController from "./theme-controller";
 function Header() {
   const { items } = useCart();
   return (
-    // <div className="border border-gray-300 rounded-md p-4 flex justify-between mb-2">
-
-    //   <nav className="flex gap-3">
-    //     <Link to={"/"}>Login</Link>
-    //     <Link to={"/checkout"}>check ({items.length})</Link>
-    //     <Link to={"/"}>Login</Link>
-    //   </nav>
-    // </div>
     <div className="navbar bg-base-100 shadow-sm mb-4">
       <div className="flex-1">
         <Link className="btn btn-ghost text-xl" to={"/"}>
@@ -52,10 +44,10 @@ function Header() {
             tabIndex={-1}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
             <li>
-              <a className="justify-between">
+              <Link to={"/profile"} className="justify-between">
                 Profile
                 <span className="badge">New</span>
-              </a>
+              </Link>
             </li>
             <li><a>Settings</a></li>
             <li><a>Logout</a></li>

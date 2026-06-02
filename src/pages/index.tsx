@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ProductCard from "../components/product-card";
 import ProductSkeleton from "../components/product-skeleton";
+import Filter from "../components/filter";
 
 function HomePage() {
   const [loading, setLoading] = useState(true)
@@ -18,8 +19,7 @@ function HomePage() {
   useEffect(() => {
     getProducts()
   }, [])
-  return (
-    // This controls how many cards show per row based on screen width
+  return (<><Filter />
     <div className="grid grid-cols-1 min-[440px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 w-full">
       {loading ? [1, 2, 3, 4, 5].map((item) => (
         <ProductSkeleton key={item} />
@@ -27,6 +27,7 @@ function HomePage() {
         <ProductCard key={item} item={item} />
       ))}
     </div>
+  </>
   );
 }
 
