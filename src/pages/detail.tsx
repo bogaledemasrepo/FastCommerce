@@ -1,5 +1,6 @@
 import { useLocation } from "react-router";
 import { useCart } from "../context/cart-context";
+import CustomButton from "../components/custom-button";
 
 function DetailPage() {
   const location = useLocation();
@@ -9,7 +10,7 @@ function DetailPage() {
   const handleAddToCart = () => {
     addToCart(product)
   }
-  const handleRemove = ()=>{
+  const handleRemove = () => {
     removeOne(product.id)
   }
   return <div className="w-full grid grid-cols-1 md:grid-cols-2">
@@ -59,12 +60,16 @@ function DetailPage() {
         <p className="text-neutral-400 my-2">Price per item :{product.price}</p>
         <p className="text-neutral-400 my-2">Available Quantity :{product.quantity}</p>
       </div>
-      {items.find(item => item.id == product.id)?.quantity ? <div className="w-full flex gap-4">
-        <button className="btn btn-primary flex-1" onClick={handleRemove}>Remove from cart</button>
+      {items.find(item => item.id == product.id)?.quantity ? 
+      <div className="w-full flex gap-4">
+        <CustomButton onClick={handleRemove} title={"Remove from cart"} />
         <p className="text-xl font-bold">{items.find(item => item.id == product.id)?.quantity}</p>
-        <button className="btn btn-primary flex-1" onClick={handleAddToCart}>Add to cart</button>
-      </div> :
-        <button className="btn btn-primary w-full" onClick={handleAddToCart}>Add to cart</button>}
+        <CustomButton onClick={handleAddToCart} title={"Add to cart"} />
+      </div> 
+      : <div className="w-full flex gap-4">
+        <CustomButton onClick={handleAddToCart} title={"Add to cart"} />
+        </div>
+      }
     </div>
 
   </div>
