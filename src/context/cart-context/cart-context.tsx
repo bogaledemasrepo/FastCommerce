@@ -1,9 +1,11 @@
 // CartContext.ts
 import { createContext, useContext } from "react";
+import type { Item } from "../../constants";
 
 interface CartContextType {
-  items: string[];
-  addToCart: (item: string) => void;
+  items: Item[];
+  addToCart: (item: Item) => void;
+  removeOne:(id:string)=>void,
 }
 
 export const CartContext = createContext<CartContextType | undefined>(
