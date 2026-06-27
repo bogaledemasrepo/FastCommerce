@@ -6,7 +6,7 @@ import { data, type Item } from "../constants";
 const API_URL = ""
 function HomePage() {
   const [loading, setLoading] = useState(true)
-  const [productList, setProductList] = useState<Item[]>([])
+  const [productList, setProductList] = useState<Item[]>(data)
 
   const getProducts = () => {
     // setLoading(true)
@@ -33,10 +33,9 @@ function HomePage() {
     <div className="grid grid-cols-1 min-[440px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4 w-full">
       {loading ? [1, 2, 3, 4, 5].map((item) => (
         <ProductSkeleton key={item} />
-      )) : data.map((item) => (
+      )) : productList.map((item) => (
         <ProductCard key={item.id} item={item} />
       ))}
-      {productList.length}
     </div>
   </>
   );

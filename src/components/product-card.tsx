@@ -7,7 +7,7 @@ function ProductCard({ item }: { item: Item }) {
   
   return (
     <Link
-      to="/detail"
+      to="/detail" state={{ product: item }}
       // REMOVED the complex w-[calc(...)] classes. Added w-full so it spans the grid column perfectly.
       className="border border-neutral-500/50 hover:border-blue-500 duration-200 rounded-md h-82 flex flex-col relative bg-base-100 text-base-content w-full max-w-[320px] mx-auto justify-self-center"
     >
