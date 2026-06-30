@@ -62,12 +62,12 @@ function DetailPage() {
       </div>
       {items.find(item => item.id == product.id)?.quantity ? 
       <div className="w-full flex gap-4">
-        <CustomButton onClick={handleRemove} title={"Remove from cart"} />
+        <CustomButton onClick={handleRemove} title={"-"} />
         <p className="text-xl font-bold">{items.find(item => item.id == product.id)?.quantity}</p>
-        <CustomButton onClick={handleAddToCart} title={"Add to cart"} />
+        <CustomButton onClick={handleAddToCart} title={"+"} />
       </div> 
       : <div className="w-full flex gap-4">
-        <CustomButton onClick={handleAddToCart} title={"Add to cart"} />
+        <CustomButton onClick={handleAddToCart} title={"+"} />
         </div>
       }
     </div>

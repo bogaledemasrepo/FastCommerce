@@ -33,7 +33,8 @@ function ProductCard({ item }: { item: Item }) {
           e.preventDefault();
           addToCart(item);
         }}
-        className="p-2 border border-blue-300 hover:bg-blue-500 transition duration-200 hover:text-white rounded-md absolute left-2 right-2 bottom-2 flex"
+        className="flex-1 sm:w-auto px-6 py-3 bg-blue-600 hover:bg-blue-700 active:scale-98 text-white font-medium text-base rounded-lg transition-all duration-200 shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        // className="p-2 border border-blue-300 hover:bg-blue-500 transition duration-200 hover:text-white rounded-md absolute left-2 right-2 bottom-2 flex"
       >
         <span className="w-full text-center font-medium text-sm">
           Add to cart
