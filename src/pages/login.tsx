@@ -26,10 +26,9 @@ function LoginPage() {
         addToast('Something went wrong.', 'error')
       })
   };
-  if (!user) return;
-  if (user.role == "ADMIN") navigate('/admins', { replace: true });
-  navigate('/customers', { replace: true });
-  return <div>
+  if (user?.role == "ADMIN") return navigate('/admins', { replace: true });
+  else if(user?.role=="CUSTOMER") return navigate('/customers', { replace: true });
+  else return <div>
     <div className="min-h-screen bg-base-200 flex items-center justify-center p-4">
       <div className="card bg-base-100 w-full max-w-md shadow-2xl border border-base-300">
         <div className="card-body p-8">
