@@ -1,6 +1,12 @@
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
+import { useAuth } from "../context/auth-contex/auth-context";
 
 export default function AdminController() {
+    const navigate = useNavigate();
+    const {user}=useAuth();
+    if (!user) navigate('/login', { replace: true });
+    else if (user.role != "ADMIN") navigate('/customers', { replace: true });
+  
     return (
         <div className="dashboard-layout">
             <div className="drawer lg:drawer-open">

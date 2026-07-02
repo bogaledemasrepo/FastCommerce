@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useAuth } from "../context/auth-contex/auth-context";
 import { useToast } from "../context/toaster-context/toster";
 import { useNavigate } from "react-router";
@@ -27,11 +26,9 @@ function LoginPage() {
         addToast('Something went wrong.', 'error')
       })
   };
-  useEffect(() => {
-    if (!user) return;
-    if (user.role == "ADMIN") navigate('/admins', { replace: true });
-    navigate('/customers', { replace: true });
-  }, [user,navigate])
+  if (!user) return;
+  if (user.role == "ADMIN") navigate('/admins', { replace: true });
+  navigate('/customers', { replace: true });
   return <div>
     <div className="min-h-screen bg-base-200 flex items-center justify-center p-4">
       <div className="card bg-base-100 w-full max-w-md shadow-2xl border border-base-300">
