@@ -1,3 +1,5 @@
+import type { ToastItem } from "../components/CustomTost";
+
 export const data = [
   {
     "id": "prod_01j1a2b3c4",
@@ -56,3 +58,19 @@ export const data = [
 ]
 
 export interface Item { id: string, price: number, quantity: number, title: string, descritpion: string, images: string[] }
+
+export interface User {
+  id: string;
+  name: string;
+  email: string;
+  avatar: string;
+  role:"ADMIN"|"CUSTOMER"
+}
+export interface AuthContextType {
+  user: User | null;
+  handleSetUser: (data: User | null) => void;
+}
+
+export interface ToastContextType {
+    addToast: (message: string, type?: ToastItem["type"]) => void
+}
