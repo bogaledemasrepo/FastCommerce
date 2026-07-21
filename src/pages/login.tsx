@@ -29,8 +29,8 @@ function LoginPage() {
   if (user?.role == "ADMIN") return navigate('/admins', { replace: true });
   else if(user?.role=="CUSTOMER") return navigate('/customers', { replace: true });
   else return <div>
-    <div className="min-h-screen bg-base-200 flex items-center justify-center p-4">
-      <div className="card bg-base-100 w-full max-w-md shadow-2xl border border-base-300">
+    <div className="min-h-screen flex items-center justify-center p-4">
+      <div className="card w-full max-w-md shadow-2xl border border-base-300">
         <div className="card-body p-8">
 
           <div className="text-center mb-6">
