@@ -8,13 +8,13 @@ import CheckoutPage from "./pages/checkout";
 import { CartProvider } from "./context/cart-context";
 import Footer from "./components/footer";
 import Profile from "./pages/profile";
-import LoginPage from "./pages/login";
 import Dashboard from "./pages/dashboard";
 import Settings from "./pages/settings";
 import AdminController from "./components/admin-controller";
 import Header from "./components/header";
 import ToastProvider from "./context/toaster-context/toast-provider";
 import AuthProvider from "./context/auth-contex/auth-provider";
+import LoginPage from "./pages/login";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

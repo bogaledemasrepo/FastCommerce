@@ -1,8 +1,9 @@
+import { useEffect } from "react";
 import { useAuth } from "../context/auth-contex/auth-context";
 import { useToast } from "../context/toaster-context/toster";
 import { useNavigate } from "react-router";
 
-function LoginPage() {
+const LoginPage = () => {
   const navigate = useNavigate();
   const { addToast } = useToast()
   const { handleSetUser, user } = useAuth()
@@ -26,9 +27,14 @@ function LoginPage() {
         addToast('Something went wrong.', 'error')
       })
   };
-  if (user?.role == "ADMIN") return navigate('/admins', { replace: true });
-  else if(user?.role=="CUSTOMER") return navigate('/customers', { replace: true });
-  else return <div>
+  useEffect(() => {
+    (() => {
+      if (user?.role == "ADMIN") return navigate('/admins', { replace: true });
+      else if (user?.role == "CUSTOMER") return navigate('/customers', { replace: true });
+    })()
+  }, [])
+
+  return <div>
     <div className="min-h-screen flex items-center justify-center p-4">
       <div className="card w-full max-w-md shadow-2xl border border-base-300">
         <div className="card-body p-8">
