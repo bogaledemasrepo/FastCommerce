@@ -17,6 +17,7 @@ import AuthProvider from "./context/auth-contex/auth-provider";
 import LoginPage from "./pages/login";
 import ProductInventory from "./pages/inventory";
 import Categories from "./pages/categories";
+import Orders from "./pages/orders";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -46,7 +47,7 @@ createRoot(document.getElementById("root")!).render(
                   <Route index element={<ProductInventory />} />
                 </Route>
                 <Route path="orders" element={<div className="p-4 max-w-280"><Outlet /></div>}>
-                  <Route index element={<Dashboard />} />
+                  <Route index element={<Orders />} />
                 </Route>
                 <Route path="customers" element={<div className="p-4 max-w-280"><Outlet /></div>}>
                   <Route index element={<Dashboard />} />
