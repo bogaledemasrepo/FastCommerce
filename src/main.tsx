@@ -16,6 +16,7 @@ import ToastProvider from "./context/toaster-context/toast-provider";
 import AuthProvider from "./context/auth-contex/auth-provider";
 import LoginPage from "./pages/login";
 import ProductInventory from "./pages/inventory";
+import Categories from "./pages/categories";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -37,6 +38,9 @@ createRoot(document.getElementById("root")!).render(
               <Route path="admins" element={<AdminController />}>
                 <Route path="dashboard" element={<div className="p-4 max-w-280 mx-auto"><Outlet /></div>}>
                   <Route index element={<Dashboard />} />
+                </Route>
+                <Route path="categories" element={<div className="p-4 max-w-280"><Outlet /></div>}>
+                  <Route index element={<Categories />} />
                 </Route>
                 <Route path="products" element={<div className="p-4 max-w-280"><Outlet /></div>}>
                   <Route index element={<ProductInventory />} />

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { apiUrl, type Product } from "../constants";
-import ProductAddModal from "../components/product-ad-modal";
+import ProductAddModal from "../components/product-add-modal";
 
 function ProductInventory() {
     const [products, setProducts] = useState<Product[]>([]);
@@ -21,6 +21,19 @@ function ProductInventory() {
     useEffect(() => {
         fetchProducts()
     }, []);
+    if(products.length === 0) {
+        return (
+            <div>
+                <div className="flex justify-between items-center mb-4">
+                    <h2 className="text-xl font-bold">Product Inventory</h2>
+                    <ProductAddModal refreshProducts={fetchProducts} />
+                </div>
+                <div className="flex justify-center items-center h-64">
+                    <span className="text-lg font-bold">No products found</span>
+                </div>
+            </div>
+        )
+    }
     return (
         <div>
             <div className="flex justify-between items-center mb-4">

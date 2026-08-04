@@ -56,6 +56,18 @@ export default function AdminController() {
                                     <span className="px-2 is-drawer-close:hidden">Dashboard</span>
                                 </button>
                             </Link></li>
+                            {/* Categories */}
+                            <li><Link to={"/admins/categories"}>
+                                <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Categories">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4">
+                                        <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path>
+                                        <path d="m3.3 7 8.7 5 8.7-5"></path>
+                                        <path d="M12 22V12"></path>
+                                    </svg>
+                                    <span className="px-2 is-drawer-close:hidden">Categories</span>
+                                </button>
+                            </Link></li>
+                            
                             {/* Products */}
                             <li><Link to={"/admins/products"}>
                                 <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Products">
