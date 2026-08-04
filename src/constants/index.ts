@@ -57,7 +57,16 @@ export const data = [
   }
 ]
 
-export interface Item { id: string, price: number, quantity: number, title: string, descritpion: string, images: string[] }
+export interface Item {
+    id: number;
+    name: string;
+    description: string;
+    price: number;
+    stockQuantity: number;
+    imageUrl: null;
+    categoryId: number;
+    categoryName: string;
+}
 
 export interface User {
   id: string;

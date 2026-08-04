@@ -15,15 +15,15 @@ function ProductCard({ item }: { item: Item }) {
       <div className="w-full h-48 min-h-48 overflow-hidden bg-base-200 rounded-t-md relative flex items-center justify-center p-4">
         <img 
           className="w-full h-full object-center hover:scale-110 transition duration-500 overflow-hidden"
-          src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-          alt={`Product ${item.title}`} 
+          src={item.imageUrl || "https://via.placeholder.com/150"}
+          alt={`Product ${item.name}`} 
         />
       </div>
 
       {/* 2. Text content layout wrapper */}
       <div className="p-3 flex-1 flex flex-col mb-16">
-        <h3 className="font-semibold text-sm truncate">#{item.title}</h3>
-        <p className="text-xs text-neutral-500 mt-1 truncate">{item.descritpion}</p>
+        <h3 className="font-semibold text-sm truncate">#{item.name}</h3>
+        <p className="text-xs text-neutral-500 mt-1 truncate">{item.description}</p>
         <h3 className="font-semibold text-sm">$ {item.price}</h3>
       </div>
 
