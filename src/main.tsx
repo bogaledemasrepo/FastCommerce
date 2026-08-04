@@ -15,6 +15,7 @@ import Header from "./components/header";
 import ToastProvider from "./context/toaster-context/toast-provider";
 import AuthProvider from "./context/auth-contex/auth-provider";
 import LoginPage from "./pages/login";
+import ProductInventory from "./pages/inventory";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -34,8 +35,24 @@ createRoot(document.getElementById("root")!).render(
                 <Route path="profile" element={<Profile />} />
               </Route>
               <Route path="admins" element={<AdminController />}>
-                <Route index element={<Dashboard />} />
-                <Route path="settings" element={<Settings />} />
+                <Route path="dashboard" element={<div className="p-4 max-w-280 mx-auto"><Outlet /></div>}>
+                  <Route index element={<Dashboard />} />
+                </Route>
+                <Route path="products" element={<div className="p-4 max-w-280"><Outlet /></div>}>
+                  <Route index element={<ProductInventory />} />
+                </Route>
+                <Route path="orders" element={<div className="p-4 max-w-280"><Outlet /></div>}>
+                  <Route index element={<Dashboard />} />
+                </Route>
+                <Route path="customers" element={<div className="p-4 max-w-280"><Outlet /></div>}>
+                  <Route index element={<Dashboard />} />
+                </Route>
+                <Route path="profile" element={<div className="p-4 max-w-280"><Outlet /></div>}>
+                  <Route index element={<Profile />} />
+                </Route>
+                <Route path="settings" element={<div className="p-4 max-w-280"><Outlet /></div>}>
+                  <Route index element={<Settings />} />
+                </Route>
               </Route>
             </Routes>
             <Footer />
