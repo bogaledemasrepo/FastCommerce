@@ -2,37 +2,53 @@ import { useEffect } from "react";
 import { useAuth } from "../context/auth-contex/auth-context";
 import { useToast } from "../context/toaster-context/toster";
 import { useNavigate } from "react-router";
+import { apiUrl } from "../constants";
 
 const LoginPage = () => {
+   
   const navigate = useNavigate();
   const { addToast } = useToast()
   const { handleSetUser, user } = useAuth()
   const handleLogin = (e: React.SubmitEvent) => {
     e.preventDefault()
-    fetch("https://exp-server-collection.onrender.com/shoeshop/auth/login", {
+    const formData = new FormData(e.target as HTMLFormElement);
+    fetch(apiUrl+"/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({
-        email: "john.doe@example.com",
-        password: "admin123"
-      })
+      body: JSON.stringify(Object.fromEntries(formData.entries()))
     }).then(res => res.json())
-      .then(({ token, user }) => {
-        localStorage.setItem("access-token", token);
-        handleSetUser(user);
+      .then(res => {
+        localStorage.setItem("access-token", res.token);
+        fetch(apiUrl+"/users/me", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${res.token}`
+          }
+        }).then(res => res.json())
+          .then(res => {
+            console.log(res);
+            handleSetUser(res);
+            addToast('Login successful.', 'success')
+            if (res.role == "ROLE_ADMIN") return navigate('/admins', { replace: true });
+            else if (res.role == "ROLE_CUSTOMER") return navigate('/customers', { replace: true });
+          }).catch(err => {
+            console.log(err);
+            addToast('Something went wrong.', 'error')
+          })
       }).catch(err => {
         console.log(err);
         addToast('Something went wrong.', 'error')
       })
-  };
+  }
   useEffect(() => {
     (() => {
-      if (user?.role == "ADMIN") return navigate('/admins', { replace: true });
-      else if (user?.role == "CUSTOMER") return navigate('/customers', { replace: true });
+      if (user?.role == "ROLE_ADMIN") return navigate('/admins', { replace: true });
+      else if (user?.role == "ROLE_CUSTOMER") return navigate('/customers', { replace: true });
     })()
-  }, [])
+  }, [user, navigate])
 
   return <div>
     <div className="min-h-screen flex items-center justify-center p-4">
@@ -68,7 +84,7 @@ const LoginPage = () => {
                     <path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
                     <path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
                   </svg>
-                  <input type="email" className="grow" placeholder="email@example.com" required />
+                  <input type="email" name="email" className="grow" placeholder="email@example.com" required />
                 </div>
               </label>
 
@@ -78,7 +94,7 @@ const LoginPage = () => {
                   <svg xmlns="http://w3.org" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-50">
                     <path fillRule="evenodd" d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z" clipRule="evenodd" />
                   </svg>
-                  <input type="password" className="grow" placeholder="••••••••" required />
+                  <input type="password" name="password" className="grow" placeholder="••••••••" required />
                 </div>
               </label>
 

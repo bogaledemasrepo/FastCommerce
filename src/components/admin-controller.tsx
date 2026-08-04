@@ -1,12 +1,12 @@
-import { Outlet, useNavigate } from "react-router";
+import { Link, Outlet, useNavigate } from "react-router";
 import { useAuth } from "../context/auth-contex/auth-context";
 
 export default function AdminController() {
     const navigate = useNavigate();
-    const {user}=useAuth();
+    const { user } = useAuth();
     if (!user) navigate('/login', { replace: true });
     else if (user.role != "ADMIN") navigate('/customers', { replace: true });
-  
+
     return (
         <div className="dashboard-layout">
             <div className="drawer lg:drawer-open">
@@ -32,7 +32,15 @@ export default function AdminController() {
                     <div className="flex min-h-full flex-col items-start bg-base-200 is-drawer-close:w-14 is-drawer-open:w-64">
                         {/* Sidebar content here */}
                         <ul className="menu w-full grow">
+                            <li><Link to={"/admins"}>
+                                <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Homepage">
+                                    <span className="text-xl font-bold">FC</span>
+                                    <span className="is-drawer-close:hidden">Admin</span>
+                                </button>
+                            </Link>
+                            </li>
                             {/* Homepage */}
+
                             <li>
                                 <button className="is-drawer-close:tooltip is-drawer-close:tooltip-right" data-tip="Homepage">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor" className="my-1.5 inline-block size-4">

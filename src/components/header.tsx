@@ -2,11 +2,33 @@ import { Link, redirect, useLocation } from "react-router";
 import { useCart } from "../context/cart-context";
 import ThemeController from "./theme-controller";
 import { useAuth } from "../context/auth-contex/auth-context";
+import { apiUrl } from "../constants";
+import { useCallback, useEffect } from "react";
 
 function Header() {
   const location = useLocation();
   const { items } = useCart();
-  const { user } = useAuth()
+  const { user, handleSetUser } = useAuth()
+  const accessToken = localStorage.getItem("access-token")
+  const fetchUser = useCallback(async () => {
+    fetch(apiUrl + "/users/me", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${accessToken}`
+      }
+    }).then(res => res.json())
+      .then(res => {
+        console.log(res);
+        handleSetUser(res);
+      }).catch(err => {
+        console.log(err);
+      })
+
+  }, [accessToken, handleSetUser])
+  useEffect(() => {
+    if (!user) fetchUser()
+  }, [user, fetchUser])
   if (location.pathname != "login" && !user) redirect("/login")
   return (
     <div className="navbar bg-base-100 shadow-sm mb-4">

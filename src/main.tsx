@@ -19,9 +19,9 @@ import LoginPage from "./pages/login";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
-    <ToastProvider>
-      <AuthProvider>
-        <CartProvider>
+      <ToastProvider>
+        <AuthProvider>
+          <CartProvider>
             <Routes>
               <Route path="/" element={<div className="p-4 max-w-280 mx-auto">
                 <Header /><Outlet /></div>}>
@@ -39,9 +39,9 @@ createRoot(document.getElementById("root")!).render(
               </Route>
             </Routes>
             <Footer />
-            
-        </CartProvider>
-      </AuthProvider>
+
+          </CartProvider>
+        </AuthProvider>
       </ToastProvider>
     </BrowserRouter>
   </StrictMode>,

@@ -64,7 +64,7 @@ export interface User {
   name: string;
   email: string;
   avatar: string;
-  role:"ADMIN"|"CUSTOMER"
+  role:"ROLE_ADMIN"|"ROLE_CUSTOMER"
 }
 export interface AuthContextType {
   user: User | null;
@@ -74,3 +74,5 @@ export interface AuthContextType {
 export interface ToastContextType {
     addToast: (message: string, type?: ToastItem["type"]) => void
 }
+
+export const apiUrl = "https://ecommerce-backend-api-n3tt.onrender.com/api/v1";
