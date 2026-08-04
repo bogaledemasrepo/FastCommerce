@@ -27,9 +27,6 @@ function HomePage() {
   }
 
   useEffect(() => {
-    // (() => {
-    //   return getProducts()
-    // })();
     getProducts()
   }, [])
 

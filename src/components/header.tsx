@@ -52,9 +52,9 @@ function Header() {
         {user ?
           <div className="dropdown dropdown-end">
             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
+              <div className="w-10 rounded-full flex justify-center items-center bg-gray-200/20">
                 <img
-                  alt="Tailwind CSS Navbar component"
+                  alt="BG"
                   src={user.avatar} />
               </div>
             </div>

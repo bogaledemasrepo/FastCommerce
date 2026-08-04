@@ -64,6 +64,7 @@ export interface Item {
     price: number;
     stockQuantity: number;
     imageUrl: null;
+    quantity: number;
     categoryId: number;
     categoryName: string;
 }
