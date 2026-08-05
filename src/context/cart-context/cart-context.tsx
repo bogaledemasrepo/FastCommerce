@@ -5,7 +5,7 @@ import type { Item } from "../../constants";
 interface CartContextType {
   items: Item[];
   addToCart: (item: Item) => void;
-  removeOne:(id:string)=>void,
+  removeOne:(id:number,one?:number)=>void,
 }
 
 export const CartContext = createContext<CartContextType | undefined>(

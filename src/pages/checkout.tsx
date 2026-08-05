@@ -10,7 +10,7 @@ function CheckoutPage() {
       {!items.length && <Link to={"/"}><EmptyCart onStartShopping={() => { }} /></Link>}
       {items.map((item) => (
         <Link to="/detail" state={{ product: item }} key={item.id}>
-          <div className="p-4 my-2 border border-gray-300 rounded-md">{item.title} #{item.quantity}</div></Link>
+          <div className="p-4 my-2 border border-gray-300 rounded-md">{item.name} #{item.quantity}</div></Link>
       ))}
     </div>
   );

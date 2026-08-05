@@ -17,7 +17,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     }
     );
   };
-  const removeOne = (id: string, one = 1) => {
+  const removeOne = (id: number, one = 1) => {
 
     if (one != 1) {
       return setItems((prev) => [...prev.filter((item) => item.id != id)])
